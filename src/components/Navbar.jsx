@@ -1,8 +1,8 @@
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Menu, X } from "lucide-react";
+import { Menu, X, History } from "lucide-react";
 
-export default function Navbar() {
+export default function Navbar({ onOpenOrders }) {
   const [isScrolled, setIsScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
@@ -67,15 +67,24 @@ export default function Navbar() {
                 onClick={(e) => handleSmoothScroll(e, link.href)}
               >
                 {link.label}
-                <span className="absolute -bottom-1 left-0 w-0 h-[1px] bg-amber-warm transition-all group-hover:w-full" />
+                <span className="absolute -bottom-1 left-0 w-0 h-px bg-amber-warm transition-all group-hover:w-full" />
               </a>
             ))}
             
-            {/* Small subtle CTA button if needed, but keeping it minimal matches vibe better */}
+            <button
+              onClick={onOpenOrders}
+              className="text-sm font-medium text-smoke hover:text-amber-glow transition-colors relative group flex items-center gap-1.5"
+            >
+              <History size={14} className="text-amber-warm/80" />
+              My Orders
+              <span className="absolute -bottom-1 left-0 w-0 h-px bg-amber-warm transition-all group-hover:w-full" />
+            </button>
+            
+            {/* CTA */}
             <a 
               href="#request"
               onClick={(e) => handleSmoothScroll(e, "#request")}
-              className="px-4 py-2 text-xs font-semibold uppercase tracking-widest text-amber-glow border border-amber-warm/30 rounded-full hover:bg-amber-warm/10 transition-colors cursor-pointer"
+              className="px-4 py-2 text-xs font-semibold uppercase tracking-widest text-amber-glow border border-amber-warm/30 rounded-full hover:bg-amber-warm/10 transition-colors cursor-pointer ml-2"
             >
               Order Now
             </a>
@@ -122,6 +131,21 @@ export default function Navbar() {
                   {link.label}
                 </motion.a>
               ))}
+              
+              {/* Mobile My Orders link */}
+              <motion.button
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: navLinks.length * 0.1 }}
+                onClick={() => {
+                  setMobileMenuOpen(false);
+                  setTimeout(onOpenOrders, 300); // small delay to clear mobile menu first
+                }}
+                className="font-serif text-3xl text-amber-warm/90 hover:text-amber-glow transition-colors mx-auto flex items-center gap-3"
+              >
+                <History size={26} />
+                My Orders
+              </motion.button>
             </div>
             
             <motion.div

@@ -6,10 +6,12 @@ import MenuGrid from "./components/MenuGrid";
 import RequestDish from "./components/RequestDish";
 import Footer from "./components/Footer";
 import ScrollToTop from "./components/ScrollToTop";
+import PastOrdersModal from "./components/PastOrdersModal";
 import menuData from "./data/menu.json";
 
 function App() {
   const [activeCategory, setActiveCategory] = useState("all");
+  const [isOrdersModalOpen, setIsOrdersModalOpen] = useState(false);
 
   const filteredItems =
     activeCategory === "all"
@@ -22,7 +24,7 @@ function App() {
       <div className="noise-overlay" />
 
       {/* Navigation */}
-      <Navbar />
+      <Navbar onOpenOrders={() => setIsOrdersModalOpen(true)} />
 
       {/* Main content */}
       <div className="relative z-10">
@@ -37,7 +39,7 @@ function App() {
         </div>
         
         <div id="request">
-          <RequestDish />
+          <RequestDish onOpenOrders={() => setIsOrdersModalOpen(true)} />
         </div>
         
         <Footer />
@@ -45,6 +47,12 @@ function App() {
 
       {/* Scroll to top FAB */}
       <ScrollToTop />
+
+      {/* Global Orders Modal */}
+      <PastOrdersModal 
+        isOpen={isOrdersModalOpen} 
+        onClose={() => setIsOrdersModalOpen(false)} 
+      />
     </div>
   );
 }

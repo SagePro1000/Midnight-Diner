@@ -1,8 +1,8 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Send, ChefHat, Check, Sparkles } from "lucide-react";
+import { Send, ChefHat, Check, Sparkles, History } from "lucide-react";
 
-export default function RequestDish() {
+export default function RequestDish({ onOpenOrders }) {
   const [dishName, setDishName] = useState("");
   const [details, setDetails] = useState("");
   const [isSubmitted, setIsSubmitted] = useState(false);
@@ -15,6 +15,23 @@ export default function RequestDish() {
     setIsAnimating(true);
     // Simulate a small delay for the "sending" animation
     setTimeout(() => {
+      // Load current requests, append new, save
+      let pastRequests = [];
+      try {
+        const saved = localStorage.getItem("midnight_diner_requests");
+        if (saved) pastRequests = JSON.parse(saved);
+      } catch (err) {}
+
+      const newReq = {
+        id: Date.now().toString(),
+        dishName: dishName.trim(),
+        details: details.trim(),
+        timestamp: new Date().toISOString(),
+      };
+      
+      const updated = [newReq, ...pastRequests];
+      localStorage.setItem("midnight_diner_requests", JSON.stringify(updated));
+
       setIsSubmitted(true);
       setIsAnimating(false);
     }, 1200);
@@ -27,7 +44,7 @@ export default function RequestDish() {
   };
 
   return (
-    <section className="max-w-6xl mx-auto px-6 mb-20">
+    <section className="max-w-6xl mx-auto px-6 mb-20 lg:mb-32">
       <div className="divider-ornament text-sm tracking-[0.2em] uppercase text-smoke mb-10">
         <span>Request a Dish</span>
       </div>
@@ -42,9 +59,9 @@ export default function RequestDish() {
         {/* Ambient glow behind card */}
         <div className="absolute -inset-4 bg-amber-warm/5 rounded-3xl blur-2xl pointer-events-none" />
 
-        <div className="relative bg-midnight-card rounded-2xl border border-white/10 overflow-hidden">
+        <div className="relative bg-midnight-card rounded-2xl border border-white/10 overflow-hidden h-full">
           {/* Top accent line */}
-          <div className="h-px bg-gradient-to-r from-transparent via-amber-warm/30 to-transparent" />
+          <div className="h-px w-full bg-gradient-to-r from-transparent via-amber-warm/30 to-transparent absolute top-0 left-0" />
 
           <div className="p-8">
             {/* Header */}
@@ -153,7 +170,7 @@ export default function RequestDish() {
                   initial={{ opacity: 0, y: 10 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.5 }}
-                  className="text-center py-6"
+                  className="text-center py-6 h-full flex flex-col items-center justify-center"
                 >
                   <motion.div
                     initial={{ scale: 0 }}
@@ -172,7 +189,7 @@ export default function RequestDish() {
                   <h3 className="font-serif text-xl font-semibold text-cream mb-2">
                     The Master nods quietly.
                   </h3>
-                  <p className="text-cream-muted text-sm mb-6">
+                  <p className="text-cream-muted text-sm mb-8 max-w-sm">
                     He's already reaching for the ingredients. Your{" "}
                     <span className="text-amber-warm font-medium">
                       {dishName}
@@ -180,12 +197,22 @@ export default function RequestDish() {
                     will be ready soon.
                   </p>
 
-                  <button
-                    onClick={handleReset}
-                    className="text-sm text-smoke hover:text-cream-muted border-b border-dashed border-smoke/30 hover:border-cream-muted/50 transition-colors cursor-pointer"
-                  >
-                    Request another dish
-                  </button>
+                  <div className="flex flex-col sm:flex-row gap-4 items-center justify-center w-full">
+                    <button
+                      onClick={onOpenOrders}
+                      className="flex items-center gap-2 px-5 py-2.5 rounded-xl bg-white/5 border border-white/10 text-cream-muted hover:text-amber-glow hover:border-amber-warm/30 transition-all cursor-pointer"
+                    >
+                      <History size={16} />
+                      <span className="text-sm font-medium">View My Orders</span>
+                    </button>
+                    
+                    <button
+                      onClick={handleReset}
+                      className="text-sm text-smoke hover:text-cream-muted border-b border-dashed border-smoke/30 hover:border-cream-muted/50 transition-colors cursor-pointer"
+                    >
+                      Request another dish
+                    </button>
+                  </div>
                 </motion.div>
               )}
             </AnimatePresence>
