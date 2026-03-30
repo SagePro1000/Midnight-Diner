@@ -2,7 +2,7 @@ import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Send, ChefHat, Check, Sparkles, History } from "lucide-react";
 
-export default function RequestDish({ onOpenOrders }) {
+export default function RequestDish({ onOpenOrders, onOrderSuccess }) {
   const [dishName, setDishName] = useState("");
   const [details, setDetails] = useState("");
   const [isSubmitted, setIsSubmitted] = useState(false);
@@ -31,6 +31,11 @@ export default function RequestDish({ onOpenOrders }) {
       
       const updated = [newReq, ...pastRequests];
       localStorage.setItem("midnight_diner_requests", JSON.stringify(updated));
+
+      // Trigger the toast notification at the app level
+      if (onOrderSuccess) {
+        onOrderSuccess(dishName.trim());
+      }
 
       setIsSubmitted(true);
       setIsAnimating(false);
