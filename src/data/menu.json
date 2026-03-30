@@ -1,0 +1,122 @@
+[
+  {
+    "id": 1,
+    "name": "Tonkotsu Ramen",
+    "nameJp": "豚骨ラーメン",
+    "price": 16,
+    "description": "18-hour pork bone broth, chashu, ajitama egg, nori, bamboo shoots & green onion.",
+    "image": "/images/tonkotsu-ramen.png",
+    "category": "comfort",
+    "tags": ["pork", "noodles", "hot"],
+    "isSpecial": true,
+    "backstory": "A weary salaryman once stumbled in at 3 AM, soaked from the rain. The Master silently placed this bowl before him. He's been a regular ever since."
+  },
+  {
+    "id": 2,
+    "name": "Yakitori Skewers",
+    "nameJp": "焼き鳥",
+    "price": 12,
+    "description": "Charcoal-grilled chicken thigh skewers glazed with house tare sauce, finished with shichimi.",
+    "image": "/images/yakitori-skewers.png",
+    "category": "latenight",
+    "tags": ["chicken", "grilled", "shareable"],
+    "isSpecial": false,
+    "backstory": "Two old friends meet here every Friday night. They never talk much — just eat these skewers and share a bottle of sake. Some friendships don't need words."
+  },
+  {
+    "id": 3,
+    "name": "Salmon Onigiri",
+    "nameJp": "鮭おにぎり",
+    "price": 8,
+    "description": "Hand-pressed rice balls with wild salmon, umeboshi, and bonito flake fillings, wrapped in crisp nori.",
+    "image": "/images/onigiri.png",
+    "category": "latenight",
+    "tags": ["rice", "salmon", "cold"],
+    "isSpecial": false,
+    "backstory": "A young musician carries these in her guitar case for after-show snacking. She says they taste better at 2 AM — and honestly, the Master agrees."
+  },
+  {
+    "id": 4,
+    "name": "Master's Tamagoyaki",
+    "nameJp": "玉子焼き",
+    "price": 9,
+    "description": "Silky rolled omelette made with dashi broth and a touch of mirin, served with grated daikon.",
+    "image": "/images/tamagoyaki.png",
+    "category": "comfort",
+    "tags": ["egg", "traditional", "light"],
+    "isSpecial": true,
+    "backstory": "The Master learned this recipe from his grandmother. He says it's the only dish he's never changed in 30 years. Some things are already perfect."
+  },
+  {
+    "id": 5,
+    "name": "Crispy Gyoza",
+    "nameJp": "餃子",
+    "price": 11,
+    "description": "Pan-fried pork and cabbage dumplings with a golden lace crust, served with house ponzu.",
+    "image": "/images/gyoza.png",
+    "category": "latenight",
+    "tags": ["pork", "fried", "shareable"],
+    "isSpecial": false,
+    "backstory": "A group of nurses from the hospital down the street come in after every night shift. They always order two rounds. The Master has their table ready by 2:30."
+  },
+  {
+    "id": 6,
+    "name": "Katsu Curry",
+    "nameJp": "カツカレー",
+    "price": 18,
+    "description": "Thick-cut heritage pork cutlet over steamed rice, draped in the Master's slow-simmered curry.",
+    "image": "/images/katsu-curry.png",
+    "category": "comfort",
+    "tags": ["pork", "rice", "hot", "hearty"],
+    "isSpecial": true,
+    "backstory": "A retired boxer comes in once a month and orders this. He calls it 'training fuel.' The Master knows it's really just homesickness — this was his mother's recipe."
+  },
+  {
+    "id": 7,
+    "name": "Edamame",
+    "nameJp": "枝豆",
+    "price": 5,
+    "description": "Steamed young soybeans tossed with Maldon sea salt and a whisper of garlic oil.",
+    "image": "/images/edamame.png",
+    "category": "latenight",
+    "tags": ["vegan", "light", "shareable"],
+    "isSpecial": false,
+    "backstory": "The Master puts this on every table without being asked. He says it's 'the silence before the conversation starts.' Nobody has ever been charged for the first bowl."
+  },
+  {
+    "id": 8,
+    "name": "Miso Soup",
+    "nameJp": "味噌汁",
+    "price": 6,
+    "description": "Red and white miso blend with silken tofu, wakame seaweed, and fresh scallions.",
+    "image": null,
+    "category": "comfort",
+    "tags": ["soup", "vegan", "hot", "traditional"],
+    "isSpecial": false,
+    "backstory": "A young woman walks in every night at midnight sharp, orders only this, reads for exactly one hour, and leaves. The Master has never asked her name."
+  },
+  {
+    "id": 9,
+    "name": "Matcha Tiramisu",
+    "nameJp": "抹茶ティラミス",
+    "price": 10,
+    "description": "Layers of matcha-soaked ladyfingers and mascarpone cream, dusted with ceremonial-grade matcha.",
+    "image": null,
+    "category": "specials",
+    "tags": ["dessert", "matcha", "sweet"],
+    "isSpecial": true,
+    "backstory": "The Master's daughter created this recipe during college. She's a doctor now, but this dish is still on the menu. He swells with quiet pride every time someone orders it."
+  },
+  {
+    "id": 10,
+    "name": "Sake Flight",
+    "nameJp": "日本酒フライト",
+    "price": 22,
+    "description": "Three curated 60ml pours — junmai, ginjo, and daiginjo — served on a hinoki cypress board.",
+    "image": null,
+    "category": "specials",
+    "tags": ["drink", "alcohol", "premium"],
+    "isSpecial": true,
+    "backstory": "A famous author once sat at the counter, drank three of these, and wrote the final chapter of his novel on a napkin. The Master still has that napkin, framed in the back."
+  }
+]
